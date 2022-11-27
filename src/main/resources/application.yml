@@ -4,14 +4,14 @@ spring:
   profiles:
     active: local
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ENC(1KX2eCaflj6ajgwm6ldGhgwFIlU1023AkInhSrDpncoPJRMbf8a8Y6qr8rPWTWrU7CeGaV/9sXkuN+0416C42qy5lCZH7s4r371LMMrXpyk=)
-    username: ENC(k4WfV4exwYNosxz0AC0T7El92cK3GWa/)
-    password: ENC(h0Hy9BQqTkAHM2cJQeRV8NHsdYOvAG9ELvwbPlwG+Jo=)
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/study/numble
+    username: sa
+    password:
   jpa:
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.H2Dialect
         show_sql: true
         format_sql: true
         use_sql_comments: true
