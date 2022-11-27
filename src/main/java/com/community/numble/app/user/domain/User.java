@@ -2,17 +2,10 @@ package com.community.numble.app.user.domain;
 
 import java.util.Collection;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
+
+import com.community.numble.app.follow.domain.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -58,6 +51,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String cellPhone;
 
+    @Column
+    private String imageCode;
+
     private int score;
 
     private String createDate;
@@ -65,6 +61,9 @@ public class User implements UserDetails {
     private String updateDate;
 
     private String emailCheckToken;
+
+    @OneToMany
+    private List<Follow> followList;
     @Transient
     private Collection<GrantedAuthority> authorities;
 
