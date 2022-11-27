@@ -1,8 +1,6 @@
 package com.community.numble.config;
 
-import com.community.numble.config.jwt.JwtAccessDeniedHandler;
-import com.community.numble.config.jwt.JwtAuthenticationEntryPoint;
-import com.community.numble.config.jwt.JwtTokenProvider;
+import com.community.numble.config.jwt.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -40,7 +38,9 @@ public class SecurityConfiguration{
             .sameOrigin()
             .and()
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .apply(new JwtSecurityConfig(jwtTokenProvider));
 
         http
             .formLogin().disable()

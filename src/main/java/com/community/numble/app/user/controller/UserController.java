@@ -1,8 +1,9 @@
 package com.community.numble.app.user.controller;
 
-import com.community.numble.app.user.dto.UserCreateDto;
+import com.community.numble.app.user.dto.*;
 import com.community.numble.app.user.service.UserService;
 import com.community.numble.common.service.ResponseService;
+import com.community.numble.config.jwt.*;
 import com.community.numble.system.email.domain.Email;
 import com.community.numble.system.email.dto.CheckEmailTokenDto;
 import com.community.numble.system.email.dto.SendEmailTokenDto;
@@ -12,10 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import javax.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "User", description = "사용자 관련 api")
 @RequiredArgsConstructor
@@ -65,5 +63,15 @@ public class UserController {
         }else{
             return ResponseEntity.ok(responseService.getFailResult());
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
+        return ResponseEntity.ok(responseService.getSingleResult(userService.login(loginDto)));
+    }
+
+    @PostMapping("/reissue")
+    public ResponseEntity<?> reIssue(@RequestBody TokenRequestDto tokenRequestDtoDto){
+        return ResponseEntity.ok(responseService.getSingleResult(userService.reissue(tokenRequestDtoDto)));
     }
 }

@@ -51,3 +51,6 @@ springdoc:
     path: /api-doc
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8
+
+jwt:
+  secret: ENC(cE7ea+FtMNMnWBG2xx3nc9V2ukSugxeU5/heyGqgQqoNyeuFwv3JCCZfTxTCJfrsL83Lvugw5+QhgnVjWR6flvbJhcz3AqP6EqcbX3hk7kQhld69ZNdemzdatK3lzk7bRb65bo/ILbX527m7uDNOyXY3jD20YssYwljHlOvQi95fO5Cm984RRvb7zJKXRJf+0/5n9n2lsrA=)
